@@ -56,7 +56,7 @@ flowchart LR
 
 The core principle is that an agent can **evaluate, act, observe, and iterate** until it reaches an appropriate completion point.
 
-➡️ **[View Domain 1 Notes](doc/01-domain-1-agentic-workflows/)**
+➡️ **[View Domain 1 Notes](docs/01-domain-1-agentic-workflows/README.md)**
 
 ---
 
