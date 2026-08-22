@@ -1,128 +1,227 @@
 # Claude Agentic AI Architecture
 
-> A continuously evolving architecture notebook covering Claude, agentic systems, tool use, orchestration, MCP, and enterprise AI design patterns.
+A structured technical reference covering **Claude, agentic workflows, tool use, Model Context Protocol (MCP), Claude Code, and related architecture patterns**.
 
-I created this repository while preparing for the **Claude Certified Architect – Foundations** certification.
+This repository is being developed alongside my preparation for the **Claude Certified Architect – Foundations** certification. The objective is to consolidate key concepts into concise, reusable documentation that supports both **certification revision** and **practical architecture understanding**.
 
-Rather than keeping certification notes only as handwritten material, I am converting each topic into a practical architecture reference focused on three questions:
-
-**How does it work? Why does it matter? How would I apply it in a real system?**
+The repository will continue to evolve as additional certification domains are completed.
 
 ---
 
-## Current Learning Progress
+## Current Coverage
 
-| Domain            | Focus Area                           | Status             |
-| ----------------- | ------------------------------------ | ------------------ |
-| Domain 1          | Agentic Architecture & Orchestration | 🟢 Notes Published |
-| Domain 2          | Tools, MCP & Claude Code             | 🟢 Notes Published |
-| Domain 3          | In Progress                          | ⏳ Learning         |
-| Remaining Domains | To be added as I progress            | ⏳ Planned          |
-
-> This repository grows alongside my certification preparation. Topics are added after I study, validate, and summarize them.
+| Domain                 | Focus Area                           | Status        |
+| ---------------------- | ------------------------------------ | ------------- |
+| **Domain 1**           | Agentic Architecture & Orchestration | ✅ Completed   |
+| **Domain 2**           | Tools, MCP & Claude Code             | ✅ Completed   |
+| **Additional Domains** | To be added progressively            | ⏳ In Progress |
 
 ---
 
-## Current Knowledge Map
+## Domain 1 — Agentic Architecture & Orchestration
 
-### Domain 1 — Agentic Architecture & Orchestration
+This domain covers the architectural foundations of agentic systems and how Claude can operate beyond a traditional request-response interaction.
 
-Topics currently covered:
+### Topics Covered
 
-* Chatbot vs agent
-* Agentic loop
-* Tool-use lifecycle
-* Loop termination
+* Chatbot vs Agent
+* Agentic Loop
+* Tool-Use Lifecycle
 * `stop_reason`
-* Coordinator and subagent architecture
-* Task decomposition
-* Delegation and aggregation
-* Context passing
-* Prompt chaining
-* Dynamic decomposition
-* Human-in-the-loop
-* Guidance vs deterministic enforcement
-* Agent SDK hooks
-* Sessions and forking
-* Human handoff patterns
+* `tool_use` and `tool_result`
+* Coordinator and Subagent Patterns
+* Task Decomposition
+* Delegation and Aggregation
+* Context Passing
+* Prompt Chaining
+* Dynamic Decomposition
+* Guidance vs Enforcement
+* Agent Hooks
+* `PreToolUse` and `PostToolUse`
+* Human-in-the-Loop
+* Human Handoff
+* Sessions and Forking
 
-➡️ [Explore Domain 1](docs/01-agentic-architecture-and-orchestration/)
+### Architecture Overview
+
+```mermaid
+flowchart LR
+    U[User Goal] --> A[Agent]
+    A --> D{Decide Next Action}
+    D --> T[Tool / Subagent]
+    T --> O[Observe Result]
+    O --> A
+    D -->|Goal Complete| F[Final Response]
+```
+
+The core principle is that an agent can **evaluate, act, observe, and iterate** until it reaches an appropriate completion point.
+
+➡️ **[View Domain 1 Notes](doc/01-domain-1-agentic-workflows/)**
 
 ---
 
-### Domain 2 — Tools, MCP & Claude Code
+## Domain 2 — Tools, MCP & Claude Code
 
-Topics currently covered:
+This domain focuses on how Claude interacts with external systems, applications, data sources, files, APIs, and development environments.
 
-* What tools are
-* Tool definitions
-* Tool descriptions and schemas
-* Tool selection
+### Topics Covered
+
+* Tool Architecture
+* Client Tools and Server Tools
+* Tool Definitions
+* Tool Descriptions
+* Input Schemas
+* Tool Naming and Ambiguity
+* Tool Distribution
 * `tool_choice`
-* Tool distribution
-* Structured tool errors
-* MCP fundamentals
-* MCP tools vs resources
-* MCP server connectivity
-* Configuration scopes
-* Claude Code built-in tools
-* Grep vs Glob
+* Structured Error Handling
+* Retryable vs Non-Retryable Errors
+* Success with Empty Results
+* Model Context Protocol (MCP)
+* MCP Tools and Resources
+* MCP Server Architecture
+* Local and Remote MCP Connections
+* Configuration Scopes
+* Secret Handling
+* Claude Code Built-in Tools
 * Read / Write / Edit / Bash
-* Secret handling
+* Grep vs Glob
 
-➡️ [Explore Domain 2](docs/02-tools-mcp-and-claude-code/)
+### Architecture Overview
+
+```mermaid
+flowchart LR
+    U[User Request] --> C[Claude]
+    C --> T[Tool / MCP]
+    T --> E[External System]
+    E --> T
+    T --> C
+    C --> R[Response or Next Action]
+```
+
+The central architecture principle is that tools provide Claude with **controlled access to external capabilities**, while MCP provides a standardized integration model for exposing tools and context.
+
+➡️ **[View Domain 2 Notes](doc/02-domain-2-tools-mcp-and-claude-code/)**
 
 ---
 
-## How I Structure My Notes
+## Key Architecture Concepts
 
-For important concepts I try to capture:
+| Concept                   | Architecture Perspective                                              |
+| ------------------------- | --------------------------------------------------------------------- |
+| **Agent**                 | Iteratively evaluates, acts, observes, and continues toward a goal    |
+| **Coordinator**           | Decomposes work, delegates tasks, and aggregates results              |
+| **Subagent**              | Provides specialized execution within an isolated responsibility      |
+| **Prompt Chaining**       | Suitable for predictable, predefined workflows                        |
+| **Dynamic Decomposition** | Suitable when subsequent actions depend on runtime discoveries        |
+| **Tool**                  | Provides an external capability that Claude can request               |
+| **Tool Definition**       | Describes the capability, usage conditions, and expected input        |
+| **MCP**                   | Standardizes integration between AI applications and external systems |
+| **Resource**              | Provides contextual information without representing an action        |
+| **Hook / Policy Gate**    | Introduces deterministic control into an agent workflow               |
+| **Human-in-the-Loop**     | Provides oversight for high-impact or sensitive actions               |
+
+---
+
+## Agentic Architecture — Combined View
+
+The concepts across Domains 1 and 2 can be represented through the following simplified workflow:
+
+```mermaid
+flowchart TD
+    U[User Request] --> A[Claude Agent]
+
+    A --> D{External Action Required?}
+
+    D -->|No| R[Generate Response]
+
+    D -->|Yes| S[Select Tool / Capability]
+
+    S --> G{Policy or Validation Required?}
+
+    G -->|Approved| E[Execute Capability]
+
+    G -->|Human Approval Required| H[Human Review]
+
+    H --> E
+
+    E --> O[Return Result]
+
+    O --> A
+```
+
+This architecture combines:
+
+* iterative agent execution
+* tool selection
+* workflow control
+* deterministic policy enforcement
+* human approval
+* external system interaction
+* structured result handling
+
+---
+
+## Documentation Approach
+
+Each domain is documented using a consistent structure:
 
 ```text
 Concept
    ↓
-Simple Mental Model
+Architecture Explanation
    ↓
-How Claude Uses It
+Execution Flow
    ↓
-Architecture Flow
+Practical Example
    ↓
-Real-World Example
+Comparison / Design Consideration
    ↓
-Design Considerations
-   ↓
-Exam Takeaway
+Quick Revision
 ```
 
-The objective is not simply to memorize terminology but to understand the underlying architecture.
+This format is intended to make the repository useful both as a **technical reference** and as a **rapid revision resource**.
 
 ---
 
-## Repository Philosophy
+## Repository Structure
 
-### Learn → Understand → Architect → Document
+```text
+claude-agentic-ai-architecture/
+│
+├── README.md
+│
+└── doc/
+    │
+    ├── 01-domain-1-agentic-workflows/
+    │   └── README.md
+    │
+    └── 02-domain-2-tools-mcp-and-claude-code/
+        └── README.md
+```
 
-Certification preparation is the starting point.
-
-The longer-term objective of this repository is to build a practical reference for designing:
-
-* agentic applications
-* tool-enabled AI systems
-* multi-agent workflows
-* human-in-the-loop processes
-* MCP integrations
-* governed enterprise AI solutions
+Additional domains will be incorporated as the certification preparation progresses.
 
 ---
 
-## Quick Revision
+## Purpose
 
-Each completed domain contains a `quick-revision.md` designed for short revision sessions before the certification exam.
+The objective of this repository is to build a reusable understanding of Claude and agentic AI architecture by focusing on:
+
+* architecture fundamentals
+* execution and orchestration patterns
+* tool and integration design
+* workflow control
+* reliability and error handling
+* security and governance considerations
+* practical implementation scenarios
+
+The emphasis is on understanding **how the architecture works and why a particular design pattern should be used**, rather than memorizing terminology in isolation.
 
 ---
 
 ## Disclaimer
 
-These are personal learning and architecture notes created during my certification preparation. They are not official Anthropic certification documentation.
+This repository contains independently prepared technical notes developed for learning, certification preparation, and architecture reference.
 
-For production implementations and exam preparation, always validate concepts against current Anthropic documentation.
+It is not official Anthropic documentation. Product behaviour, APIs, and implementation details should be validated against the latest official Anthropic documentation before production use.
