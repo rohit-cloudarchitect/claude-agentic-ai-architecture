@@ -101,7 +101,7 @@ flowchart LR
 
 The central architecture principle is that tools provide Claude with **controlled access to external capabilities**, while MCP provides a standardized integration model for exposing tools and context.
 
-➡️ **[View Domain 2 Notes](doc/02-domain-2-tools-mcp-and-claude-code/)**
+➡️ **[View Domain 2 Notes](docs/02-domain-2-tools-mcp-and-claude-code/README.md)**
 
 ---
 
