@@ -16,8 +16,7 @@ The repository will continue to evolve as additional certification domains are c
 | **Domain 2**           | Tools, MCP & Claude Code             | ✅ Completed   |
 | **Domain 3** | Claude Code Configuration, Memory & Workflows | ✅ Completed |
 | **Domain 4** | Prompt Engineering, Structured Outputs & Reliable Evaluation | ✅ Completed |
-| **Additional Domains** | To be added progressively            | ⏳ In Progress |
-
+| **Domain 5** | Context Management, Reliability, Recovery & Provenance | ✅ Completed |
 ---
 
 ## Domain 1 — Agentic Architecture & Orchestration
@@ -178,6 +177,36 @@ This domain focuses on improving the reliability, consistency, and scalability o
 
 ➡️ **[View Domain 4 Notes](docs/04-domain-4-prompt-engineering-reliable-output/)**
 
+## Domain 5 — Context Management, Reliability, Recovery & Provenance
+
+This domain focuses on maintaining reliable long-running Claude and multi-agent workflows by actively managing context, preserving durable state, handling failures explicitly, resolving ambiguity, routing uncertainty, and maintaining traceability to source information.
+
+### Topics Covered
+
+- Context windows and context degradation
+- Context compaction
+- `/compact`
+- Progressive summarization
+- Durable state and progress persistence
+- Ambiguity resolution
+- Escalation and human handoff
+- Multi-agent failure propagation
+- Structured failure handling
+- Retry, skip, and escalation strategies
+- Bounded retries
+- Recovery manifests
+- Subagent context isolation
+- Explore workflows
+- Confidence-based routing
+- Field-level confidence
+- Confidence calibration
+- Provenance and citations
+- Multi-source synthesis
+- Conflicting evidence
+- Temporal reasoning
+
+➡️ **[View Domain 5 Notes](docs/05-domain-5-context-management-reliability-recovery/)**
+
 ## Agentic Architecture — Combined View
 
 The concepts across Domains 1 and 2 can be represented through the following simplified workflow:
@@ -249,14 +278,13 @@ claude-agentic-ai-architecture/
 └── docs/
     ├── 01-domain-1-agentic-workflows/
     │   └── README.md
-    │
     ├── 02-domain-2-tools-mcp-and-claude-code/
     │   └── README.md
-    │
     ├── 03-domain-3-claude-code-configuration-memory-workflows/
     │   └── README.md
-    │
-    └── 04-domain-4-prompt-engineering-reliable-output/
+    ├── 04-domain-4-prompt-engineering-reliable-output/
+    │   └── README.md
+    └── 05-domain-5-context-management-reliability-recovery/
         └── README.md
 ```
 
