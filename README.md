@@ -14,6 +14,7 @@ The repository will continue to evolve as additional certification domains are c
 | ---------------------- | ------------------------------------ | ------------- |
 | **Domain 1**           | Agentic Architecture & Orchestration | ✅ Completed   |
 | **Domain 2**           | Tools, MCP & Claude Code             | ✅ Completed   |
+| **Domain 3** | Claude Code Configuration, Memory & Workflows | ✅ Completed |
 | **Additional Domains** | To be added progressively            | ⏳ In Progress |
 
 ---
