@@ -15,6 +15,7 @@ The repository will continue to evolve as additional certification domains are c
 | **Domain 1**           | Agentic Architecture & Orchestration | ✅ Completed   |
 | **Domain 2**           | Tools, MCP & Claude Code             | ✅ Completed   |
 | **Domain 3** | Claude Code Configuration, Memory & Workflows | ✅ Completed |
+| **Domain 4** | Prompt Engineering, Structured Outputs & Reliable Evaluation | ✅ Completed |
 | **Additional Domains** | To be added progressively            | ⏳ In Progress |
 
 ---
@@ -149,6 +150,34 @@ This domain covers how Claude Code maintains persistent project context, applies
 
 ➡️ **[View Domain 3 Notes](docs/03-domain-3-claude-code-configuration-memory-workflows/)**
 
+## Domain 4 — Prompt Engineering, Structured Outputs & Reliable Evaluation
+
+This domain focuses on improving the reliability, consistency, and scalability of Claude-based workflows through explicit evaluation criteria, effective prompting, structured outputs, validation, correction loops, independent review, and asynchronous batch processing.
+
+### Topics Covered
+
+- Explicit success criteria
+- Vague vs specific prompting
+- Severity and confidence
+- False positives and false negatives
+- Few-shot prompting
+- Edge-case examples
+- Structured Outputs and JSON Schema
+- Required vs nullable fields
+- Enums and escape-hatch patterns
+- Structured vs semantically correct output
+- Validation
+- Retry with feedback
+- Bounded self-correction
+- Message Batches API
+- `custom_id`
+- Batch result correlation
+- Per-file and cross-file review
+- Independent review passes
+- Multi-pass aggregation
+
+➡️ **[View Domain 4 Notes](docs/04-domain-4-prompt-engineering-reliable-output/)**
+
 ## Agentic Architecture — Combined View
 
 The concepts across Domains 1 and 2 can be represented through the following simplified workflow:
@@ -224,7 +253,10 @@ claude-agentic-ai-architecture/
     ├── 02-domain-2-tools-mcp-and-claude-code/
     │   └── README.md
     │
-    └── 03-domain-3-claude-code-configuration-memory-workflows/
+    ├── 03-domain-3-claude-code-configuration-memory-workflows/
+    │   └── README.md
+    │
+    └── 04-domain-4-prompt-engineering-reliable-output/
         └── README.md
 ```
 
