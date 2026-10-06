@@ -123,6 +123,31 @@ The central architecture principle is that tools provide Claude with **controlle
 | **Human-in-the-Loop**     | Provides oversight for high-impact or sensitive actions               |
 
 ---
+## Domain 3 — Claude Code Configuration, Memory & Workflows
+
+This domain covers how Claude Code maintains persistent project context, applies scoped instructions, packages reusable workflows, plans complex changes, and operates safely in automated environments.
+
+### Topics Covered
+
+- `CLAUDE.md` and persistent project instructions
+- User, project, local, and nested instruction scopes
+- CLAUDE.md imports
+- `.claude/rules/`
+- Path-specific rules
+- Skills and reusable workflows
+- Skill frontmatter
+- `$ARGUMENTS`
+- `disable-model-invocation`
+- `allowed-tools`
+- `context: fork`
+- Plan Mode
+- Iterative refinement
+- Sequential vs parallel execution
+- Claude Code in CI/CD
+- Structured output
+- Turn, tool, and budget controls
+
+➡️ **[View Domain 3 Notes](docs/03-domain-3-claude-code-configuration-memory-workflows/)**
 
 ## Agentic Architecture — Combined View
 
@@ -192,12 +217,14 @@ claude-agentic-ai-architecture/
 │
 ├── README.md
 │
-└── doc/
-    │
+└── docs/
     ├── 01-domain-1-agentic-workflows/
     │   └── README.md
     │
-    └── 02-domain-2-tools-mcp-and-claude-code/
+    ├── 02-domain-2-tools-mcp-and-claude-code/
+    │   └── README.md
+    │
+    └── 03-domain-3-claude-code-configuration-memory-workflows/
         └── README.md
 ```
 
