@@ -1,4 +1,13 @@
-# Claude Agentic AI Architecture
+# Claude Agentic AI Architecture Reference
+
+> A production-oriented technical reference for Claude agentic systems,
+> tool design, MCP, Claude Code workflows, structured outputs,
+> context management and reliability.
+
+**Certification Alignment:** Claude Certified Architect, Foundations  
+**Status:** Certification Completed
+
+Production-oriented Claude architecture reference covering agentic orchestration, tools & MCP, Claude Code, structured outputs, context engineering and reliability.
 
 A structured technical reference covering **Claude, agentic workflows, tool use, Model Context Protocol (MCP), Claude Code, and related architecture patterns**.
 
